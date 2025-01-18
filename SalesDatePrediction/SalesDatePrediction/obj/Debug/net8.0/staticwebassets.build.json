@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "l0PNqYpJnBAHCn0o5a6noevN6gXQqw/Lo7xuUXB0e5w=",
+  "Source": "SalesDatePrediction",
+  "BasePath": "_content/SalesDatePrediction",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

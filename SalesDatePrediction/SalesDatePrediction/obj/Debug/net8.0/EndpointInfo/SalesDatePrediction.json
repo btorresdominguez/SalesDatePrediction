@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SalesDatePrediction",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Customer/NextOrderPrediction": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/GetClientNameOrders/{customerId}": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/GetEmployees": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/GetShippers": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/GetProducts": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/CreateOrder": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/GetClientOrders/{customerName}": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "parameters": [
+          {
+            "name": "customerName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "OrderDetailDto": {
+        "type": "object",
+        "properties": {
+          "productid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unitprice": {
+            "type": "number",
+            "format": "double"
+          },
+          "qty": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "discount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderDto": {
+        "type": "object",
+        "properties": {
+          "empid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "shipperid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "shipname": {
+            "type": "string",
+            "nullable": true
+          },
+          "shipaddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "shipcity": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requireddate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "shippeddate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "freight": {
+            "type": "number",
+            "format": "double"
+          },
+          "shipcountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderDetailDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "ContainingType": "SalesDatePrediction.Controllers.CustomerController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Customer/CreateOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderDto",
+        "Type": "SalesDatePrediction.Models.OrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesDatePrediction.Controllers.CustomerController",
+    "Method": "GetClientOrders",
+    "RelativePath": "api/Customer/GetClientNameOrders/{customerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesDatePrediction.Controllers.CustomerController",
+    "Method": "GetClientOrders",
+    "RelativePath": "api/Customer/GetClientOrders/{customerName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesDatePrediction.Controllers.CustomerController",
+    "Method": "GetEmployees",
+    "RelativePath": "api/Customer/GetEmployees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesDatePrediction.Controllers.CustomerController",
+    "Method": "GetProducts",
+    "RelativePath": "api/Customer/GetProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesDatePrediction.Controllers.CustomerController",
+    "Method": "GetShippers",
+    "RelativePath": "api/Customer/GetShippers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesDatePrediction.Controllers.CustomerController",
+    "Method": "GetNextOrderPrediction",
+    "RelativePath": "api/Customer/NextOrderPrediction",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

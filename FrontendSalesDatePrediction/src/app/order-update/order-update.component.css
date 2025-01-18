@@ -1,0 +1,73 @@
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border: 1px solid #e0e0e0;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .custom-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+  
+  mat-dialog-content {
+    max-height: 400px;
+    overflow: auto;
+  }
+  
+  mat-dialog-actions {
+    padding: 8px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .mat-paginator {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 16px;
+  }
+  
+  .dialog-title {
+    background-color: #d32f2f; /* Rojo */
+    color: white;
+    padding: 16px;
+    font-size: 18px;
+  }
+  
+  .custom-table {
+    width: 100%;
+  }
+  
+  .custom-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Sombreado alterno */
+  }
+  
+  .custom-table tr:hover {
+    background-color: #f1f1f1; /* Efecto hover */
+  }
+  
+  .close-button,
+  .save-button {
+    text-transform: uppercase; /* Mayúsculas */
+    font-weight: bold; /* Opcional: Negrita para destacar */
+    background: none; /* Asegura que no haya fondo */
+    border: none; /* Sin bordes */
+    cursor: pointer; /* Cursor de mano al pasar */
+  }
+  
+  .close-button {
+    color: #d32f2f; /* Rojo */
+  }
+  
+  .save-button {
+    color: green; /* Verde */
+  }
+  
+  .new-order {
+    color: white; /* Cambia el color del texto a blanco */
+    font-weight: bold; /* Opcional: hacerlo en negrita */
+  }
+  
