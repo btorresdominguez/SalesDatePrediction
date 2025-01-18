@@ -1,0 +1,71 @@
+<!-- Filtro de búsqueda -->
+<mat-form-field appearance="fill" style="width: 100%; margin-bottom: 20px;">
+  <mat-label style="font-weight: bold; font-size: 1.5em;">Customers</mat-label> <!-- Increased font size -->
+  <div style="position: relative; display: flex; align-items: center;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Customer Name" 
+           style="flex: 1; border: none; outline: none; padding-left: 10px;" />
+    <div style="height: 2px; background-color: #ddd; width: 100%; position: absolute; bottom: 0; left: 0;"></div> <!-- Full-width divider -->
+  </div>
+</mat-form-field>
+
+<!-- Tabla de Datos -->
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" 
+       style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; border-radius: 4px;">
+  
+  <!-- Customer Name Column -->
+  <ng-container matColumnDef="customerName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header 
+        style="background-color: #f5f5f5; color: #333; padding: 12px 16px; text-align: left;"> <!-- Centered text -->
+      Customer Name 
+    </th>
+    <td mat-cell *matCellDef="let element" 
+        style="padding: 12px 16px; border-bottom: 1px solid #ddd; text-align: left;"> <!-- Adjusted text alignment -->
+      {{ element.customerName }} 
+    </td>
+  </ng-container>
+
+  <!-- Last Order Date Column -->
+  <ng-container matColumnDef="lastOrderDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header 
+        style="background-color: #f5f5f5; color: #333; padding: 12px 16px; text-align: left;"> 
+      Last Order Date 
+    </th>
+    <td mat-cell *matCellDef="let element" 
+        style="padding: 12px 16px; border-bottom: 1px solid #ddd;"> 
+      {{ element.lastOrderDate | date: 'dd/MM/yyyy' }} 
+    </td>
+  </ng-container>
+
+  <!-- Next Predicted Order Column -->
+  <ng-container matColumnDef="nextPredictedOrder">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header 
+        style="background-color: #f5f5f5; color: #333; padding: 12px 16px; text-align: left;"> 
+      Next Predicted Order 
+    </th>
+    <td mat-cell *matCellDef="let element" 
+        style="padding: 12px 16px; border-bottom: 1px solid #ddd;"> 
+      {{ element.nextPredictedOrder | date: 'dd/MM/yyyy' }} 
+    </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef 
+        style="background-color: #f5f5f5; color: #333; padding: 12px 16px; text-align: center;"> 
+      Actions 
+    </th>
+    <td mat-cell *matCellDef="let element" 
+        style="padding: 12px 16px; text-align: center; border-bottom: 1px solid #ddd;">
+      <button mat-button style="color: red;" (click)="viewOrders(element)">View Orders</button>
+      <button mat-button style="color: green;" (click)="newOrder(element.customerName)">New Order</button>
+    </td>
+  </ng-container>
+
+  <!-- Filas y Encabezado -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!-- Paginador -->
+<mat-paginator [pageSizeOptions]="[10, 10, 20]" showFirstLastButtons 
+               style="margin-top: 20px;"></mat-paginator>

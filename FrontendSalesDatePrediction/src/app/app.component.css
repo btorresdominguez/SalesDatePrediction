@@ -1,0 +1,48 @@
+/* Estilos para la tabla */
+::ng-deep .mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+::ng-deep .mat-header-cell, .mat-cell {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+::ng-deep .mat-row:hover {
+  background-color: #f1f1f1;
+}
+
+/* Estilos para los botones */
+::ng-deep .mat-button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+::ng-deep .mat-button-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+::ng-deep .mat-button-accent {
+  background-color: #28a745;
+  color: white;
+}
+mat-dialog-content {
+  background-color: white;
+  color: black;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+button {
+  margin-left: 8px;
+}

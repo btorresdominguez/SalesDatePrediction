@@ -1,0 +1,53 @@
+<h2 mat-dialog-title class="dialog-title">
+  Orders for {{ data.customerName }} <span class="new-order"></span>
+</h2>
+
+<mat-dialog-content>
+  <table mat-table [dataSource]="dataSource" matSort class="custom-table">
+
+    <!-- Order ID Column -->
+    <ng-container matColumnDef="orderId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Order ID</th>
+      <td mat-cell *matCellDef="let order">{{ order.orderId }}</td>
+    </ng-container>
+
+    <!-- Required Date Column -->
+    <ng-container matColumnDef="requiredDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Required Date</th>
+      <td mat-cell *matCellDef="let order">{{ order.requiredDate | date:'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+    <!-- Shipped Date Column -->
+    <ng-container matColumnDef="shippedDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Shipped Date</th>
+      <td mat-cell *matCellDef="let order">{{ order.shippedDate | date:'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+    <!-- Ship Name Column -->
+    <ng-container matColumnDef="shipName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ship Name</th>
+      <td mat-cell *matCellDef="let order">{{ order.shipName }}</td>
+    </ng-container>
+
+    <!-- Ship Address Column -->
+    <ng-container matColumnDef="shipAddress">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ship Address</th>
+      <td mat-cell *matCellDef="let order">{{ order.shipAddress }}</td>
+    </ng-container>
+
+    <!-- Ship City Column -->
+    <ng-container matColumnDef="shipCity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ship City</th>
+      <td mat-cell *matCellDef="let order">{{ order.shipCity }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button class="close-button" (click)="onClose()">CLOSE</button>
+</mat-dialog-actions>
