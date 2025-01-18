@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .bar {
+            fill: steelblue;
+        }
+        .bar:hover {
+            fill: orange;
+        }
+        .label {
+            font-size: 12px;
+            fill: white; /* Cambiar color según necesidad */
+            text-anchor: end; /* Alinear el texto a la derecha */
+        }
+        .update-button {
+            background-color: blue; /* Color de fondo azul */
+            color: white; /* Color de texto blanco */
+            border: 2px solid blue; /* Bordes azules */
+            padding: 5px 10px; /* Espaciado interno */
+            cursor: pointer; /* Cambiar cursor al pasar el mouse */
+            margin-left: 10px; /* Espacio a la izquierda del botón */
+            font-size: 16px; /* Tamaño de fuente */
+        }
+        .input-container {
+            margin-top: 10px; /* Espacio superior */
+            display: flex; /* Alinear elementos en fila */
+            align-items: center; /* Centrar verticalmente */
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <div class="input-container">
+        <label for="sourceData" style="margin-right: 10px;">Source Data:</label>
+        <input type="text" id="sourceData" placeholder="Ej: 4,8,15,16">
+        <button id="updateData" class="update-button">Update Data</button>
+    </div>
+    <svg id="chart" width="600" height="400"></svg>
+
+    <script>
+        const svg = d3.select("#chart");
+        const width = +svg.attr("width");
+        const height = +svg.attr("height");
+
+        function updateChart(data) {
+            svg.selectAll("*").remove(); // Limpiar el SVG
+
+            const x = d3.scaleLinear()
+                .domain([0, d3.max(data)])
+                .nice()
+                .range([0, width]);
+
+            const y = d3.scaleBand()
+                .domain(data.map((d, i) => i))
+                .range([0, height])
+                .padding(0.1);
+
+            // Crear las barras
+            svg.selectAll(".bar")
+                .data(data)
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", 0) // Las barras inician desde la izquierda
+                .attr("y", (d, i) => y(i)) // Posicionar según la escala y
+                .attr("width", d => x(d)) // Ancho basado en el valor
+                .attr("height", y.bandwidth()) // Altura basada en la escala y
+                .attr("fill", (d, i) => d3.schemeCategory10[i % 10]); // Colores diferentes
+
+            // Añadir los números
+            svg.selectAll(".label")
+                .data(data)
+                .enter().append("text")
+                .attr("class", "label")
+                .attr("x", d => x(d) - 5) // Ajustar posición horizontal
+                .attr("y", (d, i) => y(i) + y.bandwidth() / 2) // Centrar verticalmente
+                .text(d => d); // Mostrar el número
+        }
+
+        document.getElementById("updateData").addEventListener("click", () => {
+            const input = document.getElementById("sourceData").value;
+            const data = input.split(",").map(Number); // Convertir el input a un array de números
+            updateChart(data);
+        });
+    </script>
+</body>
+</html>
